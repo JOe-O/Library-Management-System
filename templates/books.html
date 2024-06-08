@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+    <link rel="stylesheet" type="text/css" href="../static/books_table.css">
+</head>
+<body>
+    <div class="content-container">
+        <h2>Books</h2>
+        <button class="add-button" onclick="addBook()">Add New Book</button>
+        <table class="books-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Available</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book[0] }}</td>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td>{{ book[3] }}</td>
+                    <td>{{ book[4] }}</td>
+                    <td>
+                        <button class="edit-button" onclick="editBook({{ book[0] }})">Edit</button>
+                        {% if book[4] %}
+                        <button class="edit-button" onclick="borrowBook({{ book[0] }})">Borrow</button>
+                        {% else %}
+                        <button class="edit-button" disabled>Borrow</button>
+                        {% endif %}
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="../static/dashboard.js"></script>
+</body>
+</html>

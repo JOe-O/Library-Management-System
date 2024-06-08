@@ -1,0 +1,23 @@
+<h2>Borrowed Books</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>USER_ID</th>
+            <th>BOOK_ID</th>
+            <th>BORROW_DATE</th>
+            <th>RETURN_DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for borrow in borrowers %}
+        <tr>
+            <td>{{ borrow[0] }}</td>
+            <td>{{ borrow[1] }}</td>
+            <td>{{ borrow[2] }}</td>
+            <td>{{ borrow[3] }}</td>
+            <td>{{ borrow[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Library Management</h2>
+        <ul>
+            <li><a href="#main-dashboard" onclick="loadContent('dashboard_main')">Dashboard</a></li>
+            <li><a href="#books" onclick="loadContent('books')">Book Management</a></li>
+            <li><a href="#users" onclick="loadContent('users')">User Management</a></li>
+            <li><a href="#borrowed-books" onclick="loadContent('borrowed_books')">Borrowed Book Management</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content" id="main-content">
+        <h1>Welcome to the Dashboard, {{ user[1] }}</h1>
+    </div>
+    <script src="../static/dashboard.js"></script>
+</body>
+</html>
