@@ -28,7 +28,9 @@
                     <td>{{ book[3] }}</td>
                     <td>{{ book[4] }}</td>
                     <td>
+                        {% if session['role'] == 'admin' %}
                         <button class="edit-button" onclick="editBook({{ book[0] }})">Edit</button>
+                        {% endif %}
                         {% if book[4] %}
                         <button class="edit-button" onclick="borrowBook({{ book[0] }})">Borrow</button>
                         {% else %}

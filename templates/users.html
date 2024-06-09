@@ -1,19 +1,41 @@
-<h2>Users</h2>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Role</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user[0] }}</td>
-            <td>{{ user[1] }}</td>
-            <td>{{ user[3] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="../static/users_table.css">
+</head>
+<body>
+    <div class="content-container">
+        <h2>Users</h2>
+        <button class="add-button" onclick="addUser()">Add New User</button>
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    {% if session['role'] == 'admin' %}
+                    <th>Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                    <td>{{ user[3] }}</td>
+                    <td>
+                        {% if session['role'] == 'admin' %}
+                        <button class="change-pass-button" onclick="changePassword({{ user[0] }})">Change Password</button>
+                        <button class="change-pass-button" onclick="changeRole({{ user[0] }})">Change Role</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="../static/dashboard.js"></script>
+</body>
+</html>

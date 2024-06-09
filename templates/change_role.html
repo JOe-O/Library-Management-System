@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Role</title>
+</head>
+<body>
+    <h2>Change Role</h2>
+    <form action="/change_role/{{ user_id }}" method="POST">
+        <label for="role">New Role:</label>
+        <select id="role" name="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

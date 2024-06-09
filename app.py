@@ -35,6 +35,7 @@ def login():
         connection.close()
         if user:
             session['user_id'] = user[0]
+            session['role'] = user[3]
             # session.permanent = False
             return redirect(url_for('dashboard'))
         else:
@@ -223,6 +224,59 @@ def borrow_book(book_id):
     connection.close()
 
     return jsonify({'message': 'Book borrowed successfully'}), 200
+
+@app.route('/change_password/<int:user_id>', methods=['GET', 'POST'])
+def change_password(user_id):
+    if 'user_id' not in session or session['role'] != 'admin':
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        new_password = request.form['password']
+        connection = create_connection()
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET password = %s WHERE id = %s", (new_password, user_id))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return redirect(url_for('dashboard'))
+
+    return render_template('change_pass.html',user_id=user_id)
+
+@app.route('/change_role/<int:user_id>', methods=['GET', 'POST'])
+def change_role(user_id):
+    if 'user_id' not in session or session['role'] != 'admin':
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        new_role = request.form['role']
+        connection = create_connection()
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET role = %s WHERE id = %s", (new_role, user_id))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return redirect(url_for('dashboard'))
+
+    return render_template('change_role.html', user_id=user_id)
+
+@app.route('/add_user', methods=['GET', 'POST'])
+def add_user():
+    if session['role'] != 'admin':
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        newUser = request.form['username']
+        newPass = request.form['password']
+        connection = create_connection()
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO users (username,password) VALUES (%s,%s)",(newUser,newPass))
+        connection.commit()
+        connection.close
+        cursor.close()
+        return redirect(url_for('dashboard'))
+
+    return render_template('add_user.html')
+
+
 
 
 @app.route('/test_database')

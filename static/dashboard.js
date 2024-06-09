@@ -1,4 +1,3 @@
-
 function loadContent(page) {
     fetch('/' + page)
         .then(response => response.text())
@@ -15,6 +14,21 @@ function editBook(bookId) {
 function addBook() {
     loadContent('add_book');
 }
+function changePassword(userId) {
+
+    loadContent('change_password/' + userId);
+}
+
+function changeRole(userId) {
+
+    loadContent('change_role/' + userId);
+}
+
+function addUser() {
+    
+    loadContent('add_user');
+}
+
 
 function borrowBook(bookId) {
     fetch('/borrow/' + bookId, { method: 'POST' })
