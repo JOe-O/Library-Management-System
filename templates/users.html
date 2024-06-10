@@ -25,18 +25,20 @@
                     <td>{{ user[0] }}</td>
                     <td>{{ user[1] }}</td>
                     <td>{{ user[3] }}</td>
+                    {% if session['role'] == 'admin' %}
                     <td>
-                        {% if session['role'] == 'admin' %}
                         <button class="change-pass-button" onclick="changePassword({{ user[0] }})">Change Password</button>
                         <button class="change-pass-button" onclick="changeRole({{ user[0] }})">Change Role</button>
-                        {% endif %}
-                    </td>
+                        </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         <br>
+        {% if session['role'] == 'admin' %}
         <button class="add-button" onclick="addUser()">Add New User</button>
+        {% endif %}
     </div>
     <script src="../static/dashboard.js"></script>
 </body>

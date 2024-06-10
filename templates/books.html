@@ -30,12 +30,9 @@
                     <td>
                         {% if session['role'] == 'admin' %}
                         <button class="edit-button" onclick="editBook({{ book[0] }})">Edit</button>
-                        {% endif %}
-                        {% if book[4] %}
+                        {% endif %} 
                         <button class="edit-button" onclick="borrowBook({{ book[0] }})">Borrow</button>
-                        {% else %}
-                        <button class="edit-button" disabled>Borrow</button>
-                        {% endif %}
+      
                     </td>
                     
                 </tr>

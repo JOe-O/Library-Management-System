@@ -33,14 +33,43 @@ function addUser() {
 function borrowBook(bookId) {
     fetch('/borrow/' + bookId, { method: 'POST' })
         .then(response => {
-            if (!response.ok) {
+            if (response.status === 200) {
+                return response.json();
+            } else if (response.status === 400) {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            } else {
                 throw new Error('Failed to borrow book');
             }
-            return response.text();
         })
         .then(data => {
-            alert(data);
+            alert(data.message);
             loadContent('books'); // Reload the books page after borrowing
         })
-        .catch(error => console.error('Error borrowing book:', error));
+        .catch(error => {
+            alert(error.message); // Display the error message
+            console.error('Error borrowing book:', error);
+        });
 }
+
+
+// function borrowBook(bookId) {
+//     fetch('/borrow/' + bookId, { method: 'POST' })
+//         .then(response => {
+//             if (!response.ok) {
+//                 alert('bad request')
+//                 throw new Error('Failed to borrow book');
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             if (data.message === 'The book is not available for borrowing') {
+//                 alert(data.message);
+//             } else {
+//                 alert('Book borrowed successfully');
+//                 loadContent('books'); // Reload the books page after borrowing
+//             }
+//         })
+//         .catch(error => console.error('Error borrowing book:', error));
+// }
