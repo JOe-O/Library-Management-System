@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="content-container">
-        <h2>Users</h2>
-        <button class="add-button" onclick="addUser()">Add New User</button>
+        <h2 class="users-heading">Users</h2>
+        
         <table class="users-table">
             <thead>
                 <tr>
@@ -35,6 +35,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        <br>
+        <button class="add-button" onclick="addUser()">Add New User</button>
     </div>
     <script src="../static/dashboard.js"></script>
 </body>

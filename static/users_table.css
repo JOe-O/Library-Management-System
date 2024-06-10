@@ -29,15 +29,31 @@
     background-color: #007bb5;
 }
 
+.users-heading {
+    font-size: 24px;
+    color: #333;
+    background-color: none;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .add-button {
-    margin-bottom: 15px;
-    padding: 10px 15px;
-    background-color: #4CAF50;
+    padding: 10px 20px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
 }
+
 .add-button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }

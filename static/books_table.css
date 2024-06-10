@@ -36,3 +36,31 @@
 .edit-button:hover {
     background-color: #007bb5;
 }
+
+.borrowed-books-heading {
+    font-size: 24px;
+    color: #333;
+    background-color: #f2f2f2;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.books-header {
+    font-size: 24px;
+    color: #333;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left;
+    background-color: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

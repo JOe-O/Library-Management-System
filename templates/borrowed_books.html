@@ -1,23 +1,34 @@
-<h2>Borrowed Books</h2>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>USER_ID</th>
-            <th>BOOK_ID</th>
-            <th>BORROW_DATE</th>
-            <th>RETURN_DATE</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for borrow in borrowers %}
-        <tr>
-            <td>{{ borrow[0] }}</td>
-            <td>{{ borrow[1] }}</td>
-            <td>{{ borrow[2] }}</td>
-            <td>{{ borrow[3] }}</td>
-            <td>{{ borrow[4] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" type="text/css" href="../static/books_table.css">
+</head>
+<body>
+    <div class="content-container">
+        <h2 class="borrowed-books-heading">Borrowed Books</h2>
+        <table class="books-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>USER ID</th>
+                    <th>BOOK ID</th>
+                    <th>BORROW DATE</th>
+                    <th>RETURN DATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for borrow in borrowers %}
+                <tr>
+                    <td>{{ borrow[0] }}</td>
+                    <td>{{ borrow[1] }}</td>
+                    <td>{{ borrow[2] }}</td>
+                    <td>{{ borrow[3] }}</td>
+                    <td>{{ borrow[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

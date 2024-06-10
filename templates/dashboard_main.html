@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page Title</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/dashboard_main.css">
 </head>
 <body>
-    <h1>Welcome to the Dashboard, {{ user[1] }}</h1>
+    <h1 class="dashboard-header">Welcome to the Dashboard, {{ user[1] }}</h1>
+    <br>
+    <div class="row">
+        <div class="column">
+            <div class="card total-books">
+                <h2>Total Books</h2>
+                <p>{{ total_books }}</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card available-books">
+                <h2>Available Books</h2>
+                <p>{{ available_books }}</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card total-users">
+                <h2>Total Users</h2>
+                <p>{{ total_users }}</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card borrowed-books">
+                <h2>Borrowed Books</h2>
+                <p>{{ total_borrowed_books }}</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

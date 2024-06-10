@@ -83,17 +83,32 @@ def books():
 def main_dashboard():
     if 'user_id' not in session:
         return redirect(url_for('login'))
-    
+
     user_id = session['user_id']
     connection = create_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM users WHERE id=%s",(user_id,))
+
+    # Retrieve user information
+    cursor.execute("SELECT * FROM users WHERE id=%s", (user_id,))
     user = cursor.fetchone()
+
+    # Retrieve counts
+    cursor.execute("SELECT COUNT(*) FROM books")
+    total_books = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM books WHERE available = 1")
+    available_books = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM users")
+    total_users = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM borrowers")
+    total_borrowed_books = cursor.fetchone()[0]
+
     cursor.close()
     connection.close()
 
-
-    return render_template('dashboard_main.html',user=user)
+    return render_template('dashboard_main.html', user=user, total_books=total_books, available_books=available_books, total_users=total_users, total_borrowed_books=total_borrowed_books)
 
 @app.route('/users')
 def users():

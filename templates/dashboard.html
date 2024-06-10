@@ -16,8 +16,15 @@
         </ul>
     </div>
     <div class="main-content" id="main-content">
-        <h1>Welcome to the Dashboard, {{ user[1] }}</h1>
+        <!-- <h1>Welcome to the Dashboard, {{ user[1] }}</h1> -->
     </div>
     <script src="../static/dashboard.js"></script>
+    <script>
+        // Load dashboard_main.html into main-content when the page loads
+        window.addEventListener('load', (event) => {
+            loadContent('dashboard_main');
+        });
+    </script>
+
 </body>
 </html>

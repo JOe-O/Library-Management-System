@@ -1,0 +1,16 @@
+/* borrowed_books_table.css */
+.content-container {
+    padding: 20px;
+}
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.books-table th, .books-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.books-table th {
+    background-color: #f2f2f2;
+}
