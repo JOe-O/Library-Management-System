@@ -9,10 +9,10 @@
         <h2>Library Management</h2>
         <ul>
             <li><a href="#main-dashboard" onclick="loadContent('dashboard_main')">Dashboard</a></li>
-            <li><a href="#books" onclick="loadContent('books')">Book Management</a></li>
-            <li><a href="#users" onclick="loadContent('users')">User Management</a></li>
-            <li><a href="#borrowed-books" onclick="loadContent('borrowed_books')">Borrowed Book Management</a></li>
-            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a href="#books" onclick="loadContent('books')">Books</a></li>
+            <li><a href="#users" onclick="loadContent('users')">Users</a></li>
+            <li><a href="#borrowed-books" onclick="loadContent('borrowed_books')">Borrowed Books</a></li>
+            <li><a href="{{ url_for('logout') }}" class="logout-link">Logout</a></li>
         </ul>
     </div>
     <div class="main-content" id="main-content">

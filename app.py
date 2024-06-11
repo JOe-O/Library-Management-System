@@ -275,21 +275,34 @@ def change_role(user_id):
 
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
-    if session['role'] != 'admin':
+    if session.get('role') != 'admin':
         return redirect(url_for('login'))
+
+    error = None
     if request.method == 'POST':
         newUser = request.form['username']
         newPass = request.form['password']
         connection = create_connection()
         cursor = connection.cursor()
-        cursor.execute("INSERT INTO users (username,password) VALUES (%s,%s)",(newUser,newPass))
-        connection.commit()
-        connection.close
-        cursor.close()
-        return redirect(url_for('dashboard'))
+
+        # Check if the username already exists
+        cursor.execute("SELECT * FROM users WHERE username = %s", (newUser,))
+        existing_user = cursor.fetchone()
+
+        if existing_user:
+            # Close the connection
+            cursor.close()
+            connection.close()
+            return render_template('add_user.html', error="Username already exists")
+        else:
+            # Insert the new user
+            cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (newUser, newPass))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            return redirect(url_for('dashboard'))
 
     return render_template('add_user.html')
-
 
 
 
