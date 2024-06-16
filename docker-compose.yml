@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  library-web:
+    build: .
+    container_name: library-web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql-db
+    networks:
+      - library-network
+    
+
+  mysql-db:
+    image: mysql:latest
+    container_name: library-db2
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD:yes 
+      - MYSQL_DATABASE:library
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - library-network
+
+volumes:
+  mysql-data:
+
+networks:
+  library-network:

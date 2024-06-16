@@ -10,7 +10,7 @@ app.config['SESSION_PERMANENT'] = False
 
 def create_connection():
     connection = mysql.connector.connect(
-        host='172.17.0.4',
+        host='mysql-db',
         user='root',
         password='',
         database='library'
@@ -318,4 +318,4 @@ def test_database():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5000)
+    app.run(debug=True,port=5000,host='0.0.0.0')
