@@ -18,8 +18,10 @@ jobs:
       - run: echo "Image successfuly uploaded to docker hub!"
   
   deploying-application:
+    needs: building-image
     runs-on: [dev]
     steps:
       - name: deploying to dev machine
+        uses: actions/checkout@v4
         run: docker compose up
 
