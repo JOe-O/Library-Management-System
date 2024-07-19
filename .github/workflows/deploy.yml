@@ -19,7 +19,7 @@ jobs:
   
   deploying-application:
     # needs: building-image
-    runs-on: [lib]
+    runs-on: self-hosted
     steps:
         - name: running a docker container
           run: sudo docker run -dp 127.0.0.1:3000:3000 joe991/todo-list:latest
