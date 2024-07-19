@@ -23,12 +23,12 @@ jobs:
     steps:
       # - name: Checkout repository
       #   uses: actions/checkout@v2
-      - run: pwd
-      # - name: deploying to dev machine
-      #   run: docker compose -f "/home/joe/Desktop/library management/docker-compose.yml" up -d
 
       - name: deploying to dev machine
-        run: docker compose -f "./docker-compose.yml" up -d
+        run: docker compose -f "/home/joe/Desktop/library management/docker-compose.yml" up -d
+
+      # - name: deploying to dev machine
+      #   run: docker compose -f "./docker-compose.yml" up -d
       
 
 
