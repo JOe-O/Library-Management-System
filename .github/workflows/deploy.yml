@@ -21,11 +21,11 @@ jobs:
     # needs: building-image
     runs-on: [dev]
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # - name: Checkout repository
+      #   uses: actions/checkout@v2
 
       - name: deploying to dev machine
-        run: docker compose up -d
+        run: docker compose up  -f "/home/joe/Desktop/library management/docker-compose.yml" -d
 
       - name: Check running containers
         run: docker ps
