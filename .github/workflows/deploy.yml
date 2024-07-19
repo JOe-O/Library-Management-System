@@ -18,7 +18,7 @@ jobs:
       - run: echo "Image successfuly uploaded to docker hub!"
   
   deploying-application:
-    # needs: building-image
+    needs: building-image
     runs-on: [dev]
     steps:
       # - name: Checkout repository
