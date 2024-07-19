@@ -24,8 +24,12 @@ jobs:
       # - name: Checkout repository
       #   uses: actions/checkout@v2
 
-      - name: deploying to dev machine
-        run: docker compose -f "/home/joe/Desktop/library management/docker-compose.yml" up -d
+      # - name: deploying to dev machine
+      #   run: docker compose -f "/home/joe/Desktop/library management/docker-compose.yml" up -d
+      - uses: actions/checkout@v4
+      - uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker-compose.yml
 
       - name: Check running containers
         run: docker ps
