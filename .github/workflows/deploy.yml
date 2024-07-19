@@ -2,28 +2,25 @@ name: building and deploying the library management system
 on: [push]
 
 jobs:
-  # building-image:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: logging into docker hub
-  #       uses: docker/login-action@v3
-  #       with:
-  #           username: ${{ secrets.DOCKERUSER }}
-  #           password: ${{ secrets.DOCKERTOKEN }}
-  #     - name: build and push
-  #       uses: docker/build-push-action@v5
-  #       with:
-  #         push: true
-  #         tags: joe991/lib-management
-  #     - run: echo "Image successfuly uploaded to docker hub!"
+  building-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: logging into docker hub
+        uses: docker/login-action@v3
+        with:
+            username: ${{ secrets.DOCKERUSER }}
+            password: ${{ secrets.DOCKERTOKEN }}
+      - name: build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: joe991/lib-management
+      - run: echo "Image successfuly uploaded to docker hub!"
   
   deploying-application:
-    # needs: building-image
-    runs-on: self-hosted
+    needs: building-image
+    runs-on: [dev]
     steps:
-        - name: running a docker container
-          run: sudo docker run -dp 127.0.0.1:3000:3000 joe991/todo-list:latest
-
-        - name: check the running container
-          run: sudo docker ps
+      - name: deploying to dev machine
+        run: docker compose up
 
