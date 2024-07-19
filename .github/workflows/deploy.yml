@@ -25,7 +25,7 @@ jobs:
       #   uses: actions/checkout@v2
 
       - name: deploying to dev machine
-        run: docker compose up  -f "/home/joe/Desktop/library management/docker-compose.yml" -d
+        run: docker compose -f "/home/joe/Desktop/library management/docker-compose.yml" -d up
 
       - name: Check running containers
         run: docker ps
