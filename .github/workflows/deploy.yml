@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: deploying to dev machine
         uses: actions/checkout@v4
-        run: docker compose up
+      - run: docker compose up
 
